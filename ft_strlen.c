@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: snkeneng <snkeneng@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:12:52 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/22 19:19:51 by snkeneng         ###   ########.fr       */
+/*   Created: 2024/04/22 19:30:50 by snkeneng          #+#    #+#             */
+/*   Updated: 2024/04/22 19:31:30 by snkeneng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int numb)
+int	ft_strlen(char *str)
 {
-	return (numb >= '0' && numb <= '9');
+	int	incr;
+
+	incr = 0;
+	while (str[incr])
+		incr++;
+	return (incr);
 }

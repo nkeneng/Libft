@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: snkeneng <snkeneng@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:12:52 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/22 19:19:51 by snkeneng         ###   ########.fr       */
+/*   Created: 2024/04/22 19:25:57 by snkeneng          #+#    #+#             */
+/*   Updated: 2024/04/22 19:28:32 by snkeneng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int numb)
+int	ft_isprint(int numb)
 {
-	return (numb >= '0' && numb <= '9');
+	return (numb >= 31 && numb <= 127);
 }
