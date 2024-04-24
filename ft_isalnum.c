@@ -14,5 +14,7 @@
 
 int	ft_isalnum(int numb)
 {
-	return (ft_isalpha(numb) || ft_isdigit(numb));
+	if (ft_isalpha(numb) || ft_isdigit(numb))
+		return (8);
+	return (0);
 }

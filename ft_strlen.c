@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(char *str)
 {
-	int	incr;
+	size_t	incr;
 
 	incr = 0;
 	while (str[incr])

@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/21 18:53:22 by marvin            #+#    #+#             */
-/*   Updated: 2024/04/21 19:00:13 by marvin           ###   ########.fr       */
+/*   Created: 2024/04/22 16:04:18 by marvin            #+#    #+#             */
+/*   Updated: 2024/04/22 16:21:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int numb)
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+int	ft_isalpha(int numb);
+int	ft_isdigit(int numb);
+
+int	main(void)
 {
-	if (numb >= 'A' && numb <= 'Z')
-		return (1024);
-	else if (numb >= 'a' && numb <= 'z')
-		return (1024);
+	//printf("ft : %d vs %d \n", ft_isalpha(2), isalpha(2));
+	//printf("ft : %d vs %d \n", ft_isalpha('c'), isalpha('c'));
+	
+
+	printf("ft : %d vs %d \n", ft_isdigit(2), isdigit(2));
+	printf("ft : %d vs %d \n", ft_isdigit(4), isdigit(4));
 	return (0);
 }
