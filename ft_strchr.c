@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snkeneng <snkeneng@student.42berlin.       +#+  +:+       +#+        */
+/*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 20:12:48 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/04/24 11:46:32 by marvin           ###   ########.fr       */
+/*   Created: 2024/04/24 17:42:56 by snkeneng          #+#    #+#             */
+/*   Updated: 2024/04/24 17:42:59 by snkeneng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strchr(const char *str, int c)
 {
-	size_t	incr;
-	char	*dest2;
-
-	incr = 0;
-	dest2 = dest;
-	while (incr < n)
+	while (*str)
 	{
-		*(char *)dest = *(char *)src;
-		dest++;
-		src++;
-		incr++;
+		if (*str == (char)c)
+			return ((char *)str);
+		str++;
 	}
-	return (dest2);
+	if (*str == (char)c)
+		return ((char *)str);
+	return (NULL);
 }
