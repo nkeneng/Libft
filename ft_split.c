@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-int count_substrings(char *s, char c)
+int	count_substrings(char *s, char c)
 {
-	int i;
-	int pos;
+	int	i;
+	int	pos;
 
 	i = 0;
 	pos = 0;
@@ -29,27 +29,30 @@ int count_substrings(char *s, char c)
 }
 // sass-ffss-ssff
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char **result;
-	int subst_count;
-	int incr;
-	int pos;
+	char	**result;
+	int		incr;
+	int		pos;
+	int		start;
 
-	subst_count = count_substrings((char *)s, c);
 	incr = 0;
 	pos = 0;
-	result = malloc((subst_count + 1) * sizeof(char *));
+	start = 0;
+	result = malloc((count_substrings((char *)s, c) + 2) * ft_strlen(s));
 	if (result)
 	{
 		while (s[pos])
 		{
 			if (s[pos] == c || s[pos + 1] == '\0')
 			{
-				result[incr] = malloc(pos + 1);
-				ft_strlcpy(result[incr], s, pos + 1);
+				result[incr] = malloc(pos - start + 1);
+				if (s[pos + 1] == '\0')
+					ft_strlcpy(result[incr], &s[start], pos - start + 2);
+				else
+					ft_strlcpy(result[incr], &s[start], pos - start + 1);
 				incr++;
-				s = s + pos + 1;
+				start = pos + 1;
 			}
 			pos++;
 		}
@@ -58,7 +61,7 @@ char **ft_split(char const *s, char c)
 	return (result);
 }
 
-int main(void)
+int	main(void)
 {
 	char *src = "hello-world-demo";
 
