@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:46:45 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/04/25 15:57:59 by snkeneng         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:30:00 by snkeneng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,16 @@
 int	count_substrings(char *s, char c)
 {
 	int	i;
-	int	pos;
 
 	i = 0;
-	pos = 0;
-	while (s[pos])
+	while (*s)
 	{
-		if (s[pos] == c)
+		while (*s == c)
+			s++;
+		if (*s != c && *s != '\0')
 			i++;
-		pos++;
+		while (*s != c && *s != '\0')
+			s++;
 	}
 	return (i);
 }
@@ -35,26 +36,27 @@ char	**ft_split(char const *s, char c)
 	int		incr;
 	int		pos;
 	int		start;
+	int		wd_count;
 
 	incr = 0;
 	pos = 0;
 	start = 0;
-	result = malloc((count_substrings((char *)s, c) + 2) * ft_strlen(s));
+	wd_count = count_substrings((char *)s, c);
+	result = malloc((wd_count + 1) * sizeof (char *));
 	if (result)
 	{
-		while (s[pos])
+		while (wd_count-- > 0)
 		{
-			if (s[pos] == c || s[pos + 1] == '\0')
+			while (s[pos] == c)
+				pos++;
+			if (s[pos] != '\0')
 			{
-				result[incr] = malloc(pos - start + 1);
-				if (s[pos + 1] == '\0')
-					ft_strlcpy(result[incr], &s[start], pos - start + 2);
-				else
-					ft_strlcpy(result[incr], &s[start], pos - start + 1);
-				incr++;
-				start = pos + 1;
+				start = pos;
+				while (s[pos] && s[pos] != c)
+					pos++;
+				result[incr] = ft_substr(s, start, pos - start);
 			}
-			pos++;
+			incr++;
 		}
 		result[incr] = NULL;
 	}
@@ -63,9 +65,9 @@ char	**ft_split(char const *s, char c)
 
 int	main(void)
 {
-	char *src = "hello-world-demo";
+	char	*src = "hello-world-demo";
 
-	char **arr = ft_split(src, '-');
+	char	**arr = ft_split(src, '-');
 
 	while (*arr)
 	{
