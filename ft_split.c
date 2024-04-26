@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	count_substrings(char *s, char c)
+int	count_substrings(char const *s, char c)
 {
 	int	i;
 
@@ -28,51 +28,54 @@ int	count_substrings(char *s, char c)
 	}
 	return (i);
 }
-// sass-ffss-ssff
 
-char	**ft_split(char const *s, char c)
+void	*free_all(char **arr, int len)
 {
-	char	**result;
+	int	i;
+
+	i = 0;
+	while (i++ < len)
+		free(arr[i]);
+	free(arr);
+	return (NULL);
+}
+
+char	**split_and_save(char **result, int wd_count, char const *s, char c)
+{
 	int		incr;
 	int		pos;
 	int		start;
-	int		wd_count;
 
 	incr = 0;
 	pos = 0;
 	start = 0;
-	wd_count = count_substrings((char *)s, c);
-	result = malloc((wd_count + 1) * sizeof (char *));
-	if (result)
+	while (wd_count-- > 0)
 	{
-		while (wd_count-- > 0)
+		while (s[pos] == c)
+			pos++;
+		if (s[pos] != '\0')
 		{
-			while (s[pos] == c)
+			start = pos;
+			while (s[pos] && s[pos] != c)
 				pos++;
-			if (s[pos] != '\0')
-			{
-				start = pos;
-				while (s[pos] && s[pos] != c)
-					pos++;
-				result[incr] = ft_substr(s, start, pos - start);
-			}
-			incr++;
+			result[incr] = ft_substr(s, start, pos - start);
+			if (!result)
+				return (free_all(result, wd_count));
 		}
-		result[incr] = NULL;
+		incr++;
 	}
+	result[incr] = NULL;
 	return (result);
 }
 
-int	main(void)
+char	**ft_split(char const *s, char c)
 {
-	char	*src = "hello-world-demo";
+	char	**result;
+	int		wd_count;
 
-	char	**arr = ft_split(src, '-');
-
-	while (*arr)
-	{
-		printf("%s\n", *arr);
-		arr++;
-	}
-	return (0);
+	wd_count = count_substrings(s, c);
+	result = malloc((wd_count + 1) * sizeof (char *));
+	if (result)
+		return (split_and_save(result, wd_count, s, c));
+	return (result);
 }
