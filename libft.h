@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 15:39:05 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/04/29 19:51:53 by snkeneng         ###   ########.fr       */
+/*   Updated: 2024/04/29 21:17:33 by snkeneng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
+# include <stdint.h>
+# include <limits.h>
 
 typedef struct s_list
 {
