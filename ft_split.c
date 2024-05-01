@@ -34,8 +34,8 @@ void	*free_all(char **arr, int len)
 	int	i;
 
 	i = 0;
-	while (i++ < len)
-		free(arr[i]);
+	while (i < len)
+		free(arr[i++]);
 	free(arr);
 	return (NULL);
 }

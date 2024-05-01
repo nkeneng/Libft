@@ -18,6 +18,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	char	*dest2;
 	char	*src2;
 
+	if (!dest || !src)
+		return (NULL);
 	incr = 0;
 	dest2 = dest;
 	src2 = (char *)src;
@@ -31,11 +33,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	else
 	{
-		while (incr < n)
-		{
+		while (incr < n--)
 			*(char *)(dest + n - 1) = *(char *)(src + n - 1);
-			n--;
-		}
 	}
 	return (dest2);
 }
