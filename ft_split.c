@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int	count_substrings(char const *s, char c)
 {
