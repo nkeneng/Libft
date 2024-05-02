@@ -21,8 +21,6 @@ BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 AR = ar rcs
 
-LIB = ranlib
-
 all: $(NAME)
 
 bonus: $(OBJS) $(BONUS_OBJS)
@@ -30,7 +28,6 @@ bonus: $(OBJS) $(BONUS_OBJS)
 
 $(NAME):: $(OBJS)
 	${AR} ${NAME} ${OBJS}
-	${LIB} ${NAME} # this line is redundant because the s option in ar rcs already updates the index
 
 %.o: %.c # this rule tells that in order to build any o file it should look for the corresponding c file
 	$(CC) $(CFLAGS) -c $< -o $@ # the -I helps the compiler look for header files
