@@ -27,7 +27,6 @@ all: $(NAME)
 
 bonus: $(OBJS) $(BONUS_OBJS)
 	${AR} ${NAME} ${OBJS} ${BONUS_OBJS}
-	${LIB} ${NAME}
 
 $(NAME):: $(OBJS)
 	${AR} ${NAME} ${OBJS}
