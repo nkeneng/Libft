@@ -11,20 +11,15 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t			incr;
 	unsigned char	*str;
 
-	if (!s)
-		return (NULL);
-	incr = 0;
 	str = (unsigned char *)s;
-	while (str[incr] && incr < n)
-	{
-		str[incr] = c;
-		incr++;
-	}
+	while (n--)
+		*(char *)str++ = (unsigned char)c;
 	return (s);
 }
