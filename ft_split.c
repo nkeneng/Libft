@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 int	count_substrings(char const *s, char c)
 {
@@ -35,7 +36,10 @@ void	*free_all(char **arr, int len)
 
 	i = 0;
 	while (i < len)
-		free(arr[i++]);
+	{
+		free(arr[i]);
+		i++;
+	}
 	free(arr);
 	return (NULL);
 }
@@ -49,7 +53,7 @@ char	**split_and_save(char **result, int wd_count, char const *s, char c)
 	incr = 0;
 	pos = 0;
 	start = 0;
-	while (wd_count-- > 0)
+	while (incr < wd_count)
 	{
 		while (s[pos] == c)
 			pos++;
@@ -59,8 +63,8 @@ char	**split_and_save(char **result, int wd_count, char const *s, char c)
 			while (s[pos] && s[pos] != c)
 				pos++;
 			result[incr] = ft_substr(s, start, pos - start);
-			if (!result)
-				return (free_all(result, wd_count));
+			if (!result[incr])
+				return (free_all(result, incr));
 		}
 		incr++;
 	}
