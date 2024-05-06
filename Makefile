@@ -23,8 +23,8 @@ AR = ar rcs
 
 all: $(NAME)
 
-bonus: $(OBJS) $(BONUS_OBJS)
-	${AR} ${NAME} ${OBJS} ${BONUS_OBJS}
+bonus: $(BONUS_OBJS)
+	${AR} ${NAME} ${BONUS_OBJS}
 
 $(NAME):: $(OBJS)
 	${AR} ${NAME} ${OBJS}
@@ -35,7 +35,10 @@ $(NAME):: $(OBJS)
 clean:
 	rm -f $(OBJS)
 
-fclean: clean
+clean-bonus:
+	rm -f $(BONUS_OBJS)
+
+fclean: clean clean-bonus
 	rm -f $(NAME)
 
 re: fclean all
