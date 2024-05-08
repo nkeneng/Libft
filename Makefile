@@ -23,8 +23,8 @@ AR = ar rcs
 
 all: $(NAME)
 
-bonus: $(BONUS_OBJS)
-	${AR} ${NAME} ${BONUS_OBJS}
+bonus: $(OBJS) $(BONUS_OBJS)
+	${AR} ${NAME} ${BONUS_OBJS} $(OBJS)
 
 $(NAME):: $(OBJS)
 	${AR} ${NAME} ${OBJS}
@@ -33,7 +33,7 @@ $(NAME):: $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@ # the -I helps the compiler look for header files
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) ${BONUS_OBJS}
 
 clean-bonus:
 	rm -f $(BONUS_OBJS)
@@ -43,4 +43,4 @@ fclean: clean clean-bonus
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus clean-bonus
