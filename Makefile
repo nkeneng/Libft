@@ -30,7 +30,7 @@ CFLAGS = -Wall -Werror -Wextra $(INCLUDES)
 $(NAME): $(OBJS)
 	$(MAKE) -C $(LIBFT_DIR)
 	$(MAKE) -C $(PRINTF_DIR)
-	ar rcs $(NAME) $(LIBFT_DIR)/libft.a $(PRINTF_DIR)/libftprintf.a $(GNL_OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 # Rule to compile object files
 %.o: %.c
