@@ -1,4 +1,4 @@
-NAME = Libft.a
+NAME = libft.a
 
 # Define project directories
 LIBFT_DIR = ./lib_ft
