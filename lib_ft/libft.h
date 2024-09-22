@@ -6,7 +6,7 @@
 /*   By: snkeneng <snkeneng@student.42berlin.       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:44:26 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/09/09 17:31:28 by stevennke        ###   ########.fr       */
+/*   Updated: 2024/09/22 10:34:37 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 int					ft_isnumber(char *str);
 int					ft_strslen(char **strs);
+char				*ft_stradd(char **s1, char const *s2);
 
 #endif

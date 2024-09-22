@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_stradd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snkeneng <snkeneng@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 21:46:50 by snkeneng          #+#    #+#             */
-/*   Updated: 2024/09/22 10:37:30 by stevennke        ###   ########.fr       */
+/*   Created: 2024/04/25 14:29:25 by snkeneng          #+#    #+#             */
+/*   Updated: 2024/09/22 10:34:18 by stevennke        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_stradd(char **s1, char const *s2)
 {
-	int	sign;
-	int	result;
+	size_t	len;
+	char	*join;
 
-	sign = 1;
-	result = 0;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
+	if (!*s1 || !s2)
+		return (NULL);
+	len = ft_strlen(*s1) + ft_strlen(s2) + 1;
+	join = (char *)malloc(len);
+	if (join)
 	{
-		if (*str == '-')
-			sign = -1;
-		str++;
+		ft_strlcpy(join, *s1, len - ft_strlen(s2));
+		ft_strlcat(join, s2, len);
 	}
-	while (*str >= '0' && *str <= '9')
-	{
-		result = result * 10 + *str - '0';
-		str++;
-	}
-	return (result * sign);
+	free(*s1);
+	return (join);
 }
